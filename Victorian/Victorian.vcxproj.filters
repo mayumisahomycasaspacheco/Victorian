@@ -23,5 +23,8 @@
     <ClInclude Include="MyForm.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="Circulo.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

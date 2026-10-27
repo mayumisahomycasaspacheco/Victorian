@@ -1,4 +1,5 @@
 #pragma once
+#include "Circulo.h"
 
 namespace Victorian {
 
@@ -76,10 +77,7 @@ namespace Victorian {
 		}
 #pragma endregion
 
-	int x = 100;
-	int y = 100;
-	int dx = 3;
-	int dy = 3;
+	Circulo^ c1 = gcnew Circulo(100, 100, 3, 3, 50, 0);
 
 	private: System::Void MyForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) 
 	{
@@ -115,34 +113,11 @@ namespace Victorian {
 	}
 	private: System::Void MyForm_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) 
 	{
-		Pen^ lapiz = gcnew Pen(Color::Black, 2);
-		e->Graphics->DrawEllipse(lapiz, x, y, 50, 50);
+		c1->dibujar(e->Graphics);
 	}
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e)
 	{
-		x = x + dx;
-		y = y + dy;
-
-		if (x <= 0)
-		{
-			dx = -dx;
-		}
-
-		if (y <= 0)
-		{
-			dy = -dy;
-		}
-		
-		if (x + 50 >= this->ClientSize.Width)
-		{
-			dx = -dx;
-		}
-
-		if (y + 50 >= this->ClientSize.Height)
-		{
-			dy = -dy;
-		}
-
+		c1->mover(this->ClientSize.Width, this->ClientSize.Height);
 		this->Invalidate();
 	}
 };
