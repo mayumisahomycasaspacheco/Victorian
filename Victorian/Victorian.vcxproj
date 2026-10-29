@@ -141,6 +141,7 @@
     <ClCompile Include="MyForm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Array_Circulo.h" />
     <ClInclude Include="Circulo.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
