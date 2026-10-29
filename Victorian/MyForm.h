@@ -1,5 +1,6 @@
 #pragma once
 #include "Array_Circulo.h"
+#include "Array_Cuadrado.h"
 
 namespace Victorian {
 
@@ -78,6 +79,7 @@ namespace Victorian {
 #pragma endregion
 
 	Array_Circulo^ circulos = gcnew Array_Circulo();
+	Array_Cuadrado^ cuadrados = gcnew Array_Cuadrado();
 	Random^ azar = gcnew Random();
 
 	private: System::Void MyForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) 
@@ -108,6 +110,14 @@ namespace Victorian {
 		else if (e->KeyCode == Keys::D)
 		{
 			this->Text = "Presionaste D";
+
+			int lado = azar->Next(20, 80);
+			int x = azar->Next(50, this->ClientSize.Width - lado - 50);
+			int y = azar->Next(50, this->ClientSize.Width - lado - 50);
+			int dx = azar->Next(2, 7);
+			int dy = azar->Next(2, 7);
+
+			cuadrados->agregar(gcnew Cuadrado(x, y, dx, dy, lado, 0));
 		}
 
 		else if (e->KeyCode == Keys::R)
@@ -123,10 +133,12 @@ namespace Victorian {
 	private: System::Void MyForm_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) 
 	{
 		circulos->dibujar(e->Graphics);
+		cuadrados->dibujar(e->Graphics);
 	}
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e)
 	{
 		circulos->mover(this->ClientSize.Width, this->ClientSize.Height);
+		cuadrados->mover(this->ClientSize.Width, this->ClientSize.Height);
 		this->Invalidate();
 	}
 };
