@@ -1,6 +1,7 @@
 #pragma once
 #include "Array_Circulo.h"
 #include "Array_Cuadrado.h"
+#include "Array_Rectangulo.h"
 
 namespace Victorian {
 
@@ -80,6 +81,7 @@ namespace Victorian {
 
 	Array_Circulo^ circulos = gcnew Array_Circulo();
 	Array_Cuadrado^ cuadrados = gcnew Array_Cuadrado();
+	Array_Rectangulo^ rectangulos = gcnew Array_Rectangulo();
 	Random^ azar = gcnew Random();
 
 	private: System::Void MyForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) 
@@ -123,6 +125,15 @@ namespace Victorian {
 		else if (e->KeyCode == Keys::R)
 		{
 			this->Text = "Presionaste R";
+
+			int ancho = azar->Next(20, 80);
+			int alto = azar->Next(20, 80);
+			int x = azar->Next(50, this->ClientSize.Width - ancho - 50);
+			int y = azar->Next(50, this->ClientSize.Width - alto - 50);
+			int dx = azar->Next(2, 7);
+			int dy = azar->Next(2, 7);
+
+			rectangulos->agregar(gcnew Rectangulo(x, y, dx, dy, ancho, alto, 0));
 		}
 
 		else if (e->KeyCode == Keys::Escape)
@@ -134,11 +145,13 @@ namespace Victorian {
 	{
 		circulos->dibujar(e->Graphics);
 		cuadrados->dibujar(e->Graphics);
+		rectangulos->dibujar(e->Graphics);
 	}
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e)
 	{
 		circulos->mover(this->ClientSize.Width, this->ClientSize.Height);
 		cuadrados->mover(this->ClientSize.Width, this->ClientSize.Height);
+		rectangulos->mover(this->ClientSize.Width, this->ClientSize.Height);
 		this->Invalidate();
 	}
 };

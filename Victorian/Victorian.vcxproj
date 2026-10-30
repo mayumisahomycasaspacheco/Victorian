@@ -143,11 +143,13 @@
   <ItemGroup>
     <ClInclude Include="Array_Circulo.h" />
     <ClInclude Include="Array_Cuadrado.h" />
+    <ClInclude Include="Array_Rectangulo.h" />
     <ClInclude Include="Circulo.h" />
     <ClInclude Include="Cuadrado.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Rectangulo.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
