@@ -23,9 +23,16 @@ namespace Victorian {
 		MyForm(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: agregar código de constructor aquí
-			//
+			
+			paleta = gcnew array<int>(8);
+			paleta[0] = ColorTranslator::ToWin32(Color::FromArgb(139, 69, 19));
+			paleta[1] = ColorTranslator::ToWin32(Color::FromArgb(184, 134, 11));
+			paleta[2] = ColorTranslator::ToWin32(Color::FromArgb(183, 110, 60));
+			paleta[3] = ColorTranslator::ToWin32(Color::FromArgb(128, 0, 32));
+			paleta[4] = ColorTranslator::ToWin32(Color::FromArgb(34, 85, 60));
+			paleta[5] = ColorTranslator::ToWin32(Color::FromArgb(25, 45, 85));
+			paleta[6] = ColorTranslator::ToWin32(Color::FromArgb(112, 66, 20));
+			paleta[7] = ColorTranslator::ToWin32(Color::FromArgb(90, 70, 60));
 		}
 
 	protected:
@@ -88,6 +95,8 @@ namespace Victorian {
 	Array_Triangulo^ triangulos = gcnew Array_Triangulo();
 	Random^ azar = gcnew Random();
 
+	array<int>^ paleta;
+
 	private: System::Void MyForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) 
 	{
 		if (e->KeyCode == Keys::T)
@@ -100,8 +109,9 @@ namespace Victorian {
 			int y = azar->Next(50, this->ClientSize.Width - alto - 50);
 			int dx = azar->Next(2, 7);
 			int dy = azar->Next(2, 7);
+			int color = paleta[azar->Next(0, 8)];
 
-			triangulos->agregar(gcnew Triangulo(x, y, dx, dy, ancho, alto, 0));
+			triangulos->agregar(gcnew Triangulo(x, y, dx, dy, ancho, alto, color));
 		}
 
 		else if (e->KeyCode == Keys::C)
@@ -113,8 +123,9 @@ namespace Victorian {
 			int y = azar->Next(50, this->ClientSize.Width - diametro - 50);
 			int dx = azar->Next(2, 7);
 			int dy = azar->Next(2, 7);
+			int color = paleta[azar->Next(0, 8)];
 
-			circulos->agregar(gcnew Circulo(x, y, dx, dy, diametro, 0));
+			circulos->agregar(gcnew Circulo(x, y, dx, dy, diametro, color));
 		}
 
 		else if (e->KeyCode == Keys::E)
@@ -127,8 +138,9 @@ namespace Victorian {
 			int y = azar->Next(50, this->ClientSize.Width - alto - 50);
 			int dx = azar->Next(2, 7);
 			int dy = azar->Next(2, 7);
+			int color = paleta[azar->Next(0, 8)];
 
-			elipses->agregar(gcnew Elipse(x, y, dx, dy, ancho, alto, 0));
+			elipses->agregar(gcnew Elipse(x, y, dx, dy, ancho, alto, color));
 		}
 
 		else if (e->KeyCode == Keys::D)
@@ -140,8 +152,9 @@ namespace Victorian {
 			int y = azar->Next(50, this->ClientSize.Width - lado - 50);
 			int dx = azar->Next(2, 7);
 			int dy = azar->Next(2, 7);
+			int color = paleta[azar->Next(0, 8)];
 
-			cuadrados->agregar(gcnew Cuadrado(x, y, dx, dy, lado, 0));
+			cuadrados->agregar(gcnew Cuadrado(x, y, dx, dy, lado, color));
 		}
 
 		else if (e->KeyCode == Keys::R)
@@ -154,8 +167,9 @@ namespace Victorian {
 			int y = azar->Next(50, this->ClientSize.Width - alto - 50);
 			int dx = azar->Next(2, 7);
 			int dy = azar->Next(2, 7);
+			int color = paleta[azar->Next(0, 8)];
 
-			rectangulos->agregar(gcnew Rectangulo(x, y, dx, dy, ancho, alto, 0));
+			rectangulos->agregar(gcnew Rectangulo(x, y, dx, dy, ancho, alto, color));
 		}
 
 		else if (e->KeyCode == Keys::Escape)
