@@ -145,6 +145,7 @@
     <ClInclude Include="Array_Cuadrado.h" />
     <ClInclude Include="Array_Elipse.h" />
     <ClInclude Include="Array_Rectangulo.h" />
+    <ClInclude Include="Array_Triangulo.h" />
     <ClInclude Include="Circulo.h" />
     <ClInclude Include="Cuadrado.h" />
     <ClInclude Include="Elipse.h" />

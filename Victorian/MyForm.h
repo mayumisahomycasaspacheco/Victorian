@@ -3,6 +3,7 @@
 #include "Array_Cuadrado.h"
 #include "Array_Rectangulo.h"
 #include "Array_Elipse.h"
+#include "Array_Triangulo.h"
 
 namespace Victorian {
 
@@ -84,6 +85,7 @@ namespace Victorian {
 	Array_Cuadrado^ cuadrados = gcnew Array_Cuadrado();
 	Array_Rectangulo^ rectangulos = gcnew Array_Rectangulo();
 	Array_Elipse^ elipses = gcnew Array_Elipse();
+	Array_Triangulo^ triangulos = gcnew Array_Triangulo();
 	Random^ azar = gcnew Random();
 
 	private: System::Void MyForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) 
@@ -91,6 +93,15 @@ namespace Victorian {
 		if (e->KeyCode == Keys::T)
 		{
 			this->Text = "Presionaste T";
+
+			int ancho = azar->Next(20, 80);
+			int alto = azar->Next(20, 80);
+			int x = azar->Next(50, this->ClientSize.Width - ancho - 50);
+			int y = azar->Next(50, this->ClientSize.Width - alto - 50);
+			int dx = azar->Next(2, 7);
+			int dy = azar->Next(2, 7);
+
+			triangulos->agregar(gcnew Triangulo(x, y, dx, dy, ancho, alto, 0));
 		}
 
 		else if (e->KeyCode == Keys::C)
@@ -158,6 +169,7 @@ namespace Victorian {
 		cuadrados->dibujar(e->Graphics);
 		rectangulos->dibujar(e->Graphics);
 		elipses->dibujar(e->Graphics);
+		triangulos->dibujar(e->Graphics);
 	}
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e)
 	{
@@ -165,6 +177,7 @@ namespace Victorian {
 		cuadrados->mover(this->ClientSize.Width, this->ClientSize.Height);
 		rectangulos->mover(this->ClientSize.Width, this->ClientSize.Height);
 		elipses->mover(this->ClientSize.Width, this->ClientSize.Height);
+		triangulos->mover(this->ClientSize.Width, this->ClientSize.Height);
 		this->Invalidate();
 	}
 };
