@@ -152,6 +152,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Rectangulo.h" />
+    <ClInclude Include="Triangulo.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
