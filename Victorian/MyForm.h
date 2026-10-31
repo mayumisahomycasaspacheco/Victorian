@@ -23,6 +23,9 @@ namespace Victorian {
 		MyForm(void)
 		{
 			InitializeComponent();
+
+			fondo = gcnew Bitmap("Sprite-0001.png");
+			this->DoubleBuffered = true;
 			
 			paleta = gcnew array<int>(8);
 			paleta[0] = ColorTranslator::ToWin32(Color::FromArgb(139, 69, 19));
@@ -87,6 +90,8 @@ namespace Victorian {
 
 		}
 #pragma endregion
+
+	Bitmap^ fondo;
 
 	Array_Circulo^ circulos = gcnew Array_Circulo();
 	Array_Cuadrado^ cuadrados = gcnew Array_Cuadrado();
