@@ -24,7 +24,7 @@ namespace Victorian {
 		{
 			InitializeComponent();
 
-			fondo = gcnew Bitmap("Sprite-0001.png");
+			fondo = gcnew Bitmap("..\\sprites\\Sprite-0001.png");
 			this->DoubleBuffered = true;
 			
 			paleta = gcnew array<int>(8);
@@ -80,7 +80,7 @@ namespace Victorian {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(282, 253);
+			this->ClientSize = System::Drawing::Size(1006, 529);
 			this->KeyPreview = true;
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
@@ -184,6 +184,10 @@ namespace Victorian {
 	}
 	private: System::Void MyForm_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) 
 	{
+		e->Graphics->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
+		e->Graphics->PixelOffsetMode = System::Drawing::Drawing2D::PixelOffsetMode::Half;
+		e->Graphics->DrawImage(fondo, 0, 0, this->ClientSize.Width, this->ClientSize.Height);
+
 		circulos->dibujar(e->Graphics);
 		cuadrados->dibujar(e->Graphics);
 		rectangulos->dibujar(e->Graphics);

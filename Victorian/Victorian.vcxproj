@@ -138,6 +138,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Form_Inicio.cpp" />
     <ClCompile Include="MyForm.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +150,9 @@
     <ClInclude Include="Circulo.h" />
     <ClInclude Include="Cuadrado.h" />
     <ClInclude Include="Elipse.h" />
+    <ClInclude Include="Form_Inicio.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -156,6 +160,9 @@
     <ClInclude Include="Triangulo.h" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form_Inicio.resx">
+      <DependentUpon>Form_Inicio.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
     </EmbeddedResource>
