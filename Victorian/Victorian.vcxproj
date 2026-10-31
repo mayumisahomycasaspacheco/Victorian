@@ -138,6 +138,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Form_Carrera.cpp" />
     <ClCompile Include="Form_Inicio.cpp" />
     <ClCompile Include="MyForm.cpp" />
   </ItemGroup>
@@ -150,6 +151,9 @@
     <ClInclude Include="Circulo.h" />
     <ClInclude Include="Cuadrado.h" />
     <ClInclude Include="Elipse.h" />
+    <ClInclude Include="Form_Carrera.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Form_Inicio.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -160,6 +164,9 @@
     <ClInclude Include="Triangulo.h" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form_Carrera.resx">
+      <DependentUpon>Form_Carrera.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Inicio.resx">
       <DependentUpon>Form_Inicio.h</DependentUpon>
     </EmbeddedResource>

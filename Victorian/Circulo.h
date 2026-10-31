@@ -14,9 +14,11 @@ public:
 
 	void dibujar(Graphics^ graphics);
 	void mover(int ancho_ventana, int alto_ventana);
+	void avanzar();
+	int obtener_borde();
 };
 
-Circulo::Circulo(int x, int y, int dx, int dy, int diametro, int color)
+inline Circulo::Circulo(int x, int y, int dx, int dy, int diametro, int color)
 {
 	this->x = x;
 	this->y = y;
@@ -26,18 +28,18 @@ Circulo::Circulo(int x, int y, int dx, int dy, int diametro, int color)
 	this->color = color;
 }
 
-Circulo::~Circulo()
+inline Circulo::~Circulo()
 {
 	//Destructor vacio
 }
 
-void Circulo::dibujar(Graphics^ graphics)
+inline void Circulo::dibujar(Graphics^ graphics)
 {
 	Pen^ lapiz = gcnew Pen(ColorTranslator::FromWin32(color), 2);
 	graphics->DrawEllipse(lapiz, x, y, diametro, diametro);
 }
 
-void Circulo::mover(int ancho_ventana, int alto_ventana)
+inline void Circulo::mover(int ancho_ventana, int alto_ventana)
 {
 	x = x + dx;
 	y = y + dy;
@@ -65,4 +67,14 @@ void Circulo::mover(int ancho_ventana, int alto_ventana)
 		dy = -dy;
 		y = alto_ventana - diametro;
 	}
+}
+
+inline void Circulo::avanzar()
+{
+	x = x + dx;
+}
+
+inline int Circulo::obtener_borde()
+{
+	return x + diametro;
 }

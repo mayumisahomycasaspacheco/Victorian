@@ -14,9 +14,11 @@ public:
 
 	void dibujar(Graphics^ graphics);
 	void mover(int ancho_ventana, int alto_ventana);
+	void avanzar();
+	int obtener_borde();
 };
 
-Triangulo::Triangulo(int x, int y, int dx, int dy, int ancho, int alto, int color)
+inline Triangulo::Triangulo(int x, int y, int dx, int dy, int ancho, int alto, int color)
 {
 	this->x = x;
 	this->y = y;
@@ -27,12 +29,12 @@ Triangulo::Triangulo(int x, int y, int dx, int dy, int ancho, int alto, int colo
 	this->color = color;
 }
 
-Triangulo::~Triangulo()
+inline Triangulo::~Triangulo()
 {
 	//Destructor vacio
 }
 
-void Triangulo::dibujar(Graphics^ graphics)
+inline void Triangulo::dibujar(Graphics^ graphics)
 {
 	Pen^ lapiz = gcnew Pen(ColorTranslator::FromWin32(color), 2);
 
@@ -43,7 +45,7 @@ void Triangulo::dibujar(Graphics^ graphics)
 	graphics->DrawPolygon(lapiz, puntos);
 }
 
-void Triangulo::mover(int ancho_ventana, int alto_ventana)
+inline void Triangulo::mover(int ancho_ventana, int alto_ventana)
 {
 	x = x + dx;
 	y = y + dy;
@@ -71,4 +73,14 @@ void Triangulo::mover(int ancho_ventana, int alto_ventana)
 		dy = -dy;
 		y = alto_ventana - alto;
 	}
+}
+
+inline void Triangulo::avanzar()
+{
+	x = x + dx;
+}
+
+inline int Triangulo::obtener_borde()
+{
+	return x + ancho;
 }

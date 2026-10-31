@@ -14,9 +14,11 @@ public:
 
 	void dibujar(Graphics^ graphics);
 	void mover(int ancho_ventana, int alto_ventana);
+	void avanzar();
+	int obtener_borde();
 };
 
-Cuadrado::Cuadrado(int x, int y, int dx, int dy, int lado, int color)
+inline Cuadrado::Cuadrado(int x, int y, int dx, int dy, int lado, int color)
 {
 	this->x = x;
 	this->y = y;
@@ -26,18 +28,18 @@ Cuadrado::Cuadrado(int x, int y, int dx, int dy, int lado, int color)
 	this->color = color;
 }
 
-Cuadrado::~Cuadrado()
+inline Cuadrado::~Cuadrado()
 {
 	//Destructor vacio
 }
 
-void Cuadrado::dibujar(Graphics^ graphics)
+inline void Cuadrado::dibujar(Graphics^ graphics)
 {
 	Pen^ lapiz = gcnew Pen(ColorTranslator::FromWin32(color), 2);
 	graphics->DrawRectangle(lapiz, x, y, lado, lado);
 }
 
-void Cuadrado::mover(int ancho_ventana, int alto_ventana)
+inline void Cuadrado::mover(int ancho_ventana, int alto_ventana)
 {
 	x = x + dx;
 	y = y + dy;
@@ -65,4 +67,14 @@ void Cuadrado::mover(int ancho_ventana, int alto_ventana)
 		dy = -dy;
 		y = alto_ventana - lado;
 	}
+}
+
+inline void Cuadrado::avanzar()
+{
+	x = x + dx;
+}
+
+inline int Cuadrado::obtener_borde()
+{
+	return x + lado;
 }
