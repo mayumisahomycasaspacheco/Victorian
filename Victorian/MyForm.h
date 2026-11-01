@@ -111,7 +111,7 @@ namespace Victorian {
 			int ancho = azar->Next(20, 80);
 			int alto = azar->Next(20, 80);
 			int x = azar->Next(50, this->ClientSize.Width - ancho - 50);
-			int y = azar->Next(50, this->ClientSize.Width - alto - 50);
+			int y = azar->Next(50, this->ClientSize.Height - alto - 50);
 			int dx = azar->Next(2, 7);
 			int dy = azar->Next(2, 7);
 			int color = paleta[azar->Next(0, 8)];
@@ -125,7 +125,7 @@ namespace Victorian {
 
 			int diametro = azar->Next(20, 80);
 			int x = azar->Next(50, this->ClientSize.Width - diametro - 50);
-			int y = azar->Next(50, this->ClientSize.Width - diametro - 50);
+			int y = azar->Next(50, this->ClientSize.Height - diametro - 50);
 			int dx = azar->Next(2, 7);
 			int dy = azar->Next(2, 7);
 			int color = paleta[azar->Next(0, 8)];
@@ -140,7 +140,7 @@ namespace Victorian {
 			int ancho = azar->Next(20, 80);
 			int alto = azar->Next(20, 80);
 			int x = azar->Next(50, this->ClientSize.Width - ancho - 50);
-			int y = azar->Next(50, this->ClientSize.Width - alto - 50);
+			int y = azar->Next(50, this->ClientSize.Height - alto - 50);
 			int dx = azar->Next(2, 7);
 			int dy = azar->Next(2, 7);
 			int color = paleta[azar->Next(0, 8)];
@@ -154,7 +154,7 @@ namespace Victorian {
 
 			int lado = azar->Next(20, 80);
 			int x = azar->Next(50, this->ClientSize.Width - lado - 50);
-			int y = azar->Next(50, this->ClientSize.Width - lado - 50);
+			int y = azar->Next(50, this->ClientSize.Height - lado - 50);
 			int dx = azar->Next(2, 7);
 			int dy = azar->Next(2, 7);
 			int color = paleta[azar->Next(0, 8)];
@@ -169,7 +169,7 @@ namespace Victorian {
 			int ancho = azar->Next(20, 80);
 			int alto = azar->Next(20, 80);
 			int x = azar->Next(50, this->ClientSize.Width - ancho - 50);
-			int y = azar->Next(50, this->ClientSize.Width - alto - 50);
+			int y = azar->Next(50, this->ClientSize.Height - alto - 50);
 			int dx = azar->Next(2, 7);
 			int dy = azar->Next(2, 7);
 			int color = paleta[azar->Next(0, 8)];

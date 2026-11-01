@@ -36,12 +36,15 @@ inline Triangulo::~Triangulo()
 
 inline void Triangulo::dibujar(Graphics^ graphics)
 {
-	Pen^ lapiz = gcnew Pen(ColorTranslator::FromWin32(color), 2);
-
 	array<Point>^ puntos = gcnew array<Point>(3);
 	puntos[0] = Point(x + ancho / 2, y);
 	puntos[1] = Point(x, y + alto);
 	puntos[2] = Point(x + ancho, y + alto);
+	
+	SolidBrush^ pincel = gcnew SolidBrush(ColorTranslator::FromWin32(color));
+	Pen^ lapiz = gcnew Pen(ColorTranslator::FromWin32(color), 2);
+
+	graphics->FillPolygon(pincel, puntos);
 	graphics->DrawPolygon(lapiz, puntos);
 }
 

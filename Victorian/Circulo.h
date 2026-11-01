@@ -35,7 +35,10 @@ inline Circulo::~Circulo()
 
 inline void Circulo::dibujar(Graphics^ graphics)
 {
-	Pen^ lapiz = gcnew Pen(ColorTranslator::FromWin32(color), 2);
+	SolidBrush^ pincel = gcnew SolidBrush(ColorTranslator::FromWin32(color));
+	Pen^ lapiz = gcnew Pen(Color::FromArgb(62, 42, 26), 2);
+
+	graphics->FillEllipse(pincel, x, y, diametro, diametro);
 	graphics->DrawEllipse(lapiz, x, y, diametro, diametro);
 }
 

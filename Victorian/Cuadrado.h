@@ -35,7 +35,10 @@ inline Cuadrado::~Cuadrado()
 
 inline void Cuadrado::dibujar(Graphics^ graphics)
 {
+	SolidBrush^ pincel = gcnew SolidBrush(ColorTranslator::FromWin32(color));
 	Pen^ lapiz = gcnew Pen(ColorTranslator::FromWin32(color), 2);
+
+	graphics->FillRectangle(pincel, x, y, lado, lado);
 	graphics->DrawRectangle(lapiz, x, y, lado, lado);
 }
 
