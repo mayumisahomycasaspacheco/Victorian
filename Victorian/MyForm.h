@@ -5,6 +5,7 @@
 #include "Array_Elipse.h"
 #include "Array_Triangulo.h"
 #include "Form_Carrera.h"
+#include "Fondo.h"
 
 namespace Victorian {
 
@@ -25,7 +26,7 @@ namespace Victorian {
 		{
 			InitializeComponent();
 
-			fondo = gcnew Bitmap("..\\sprites\\Sprite-0001.png");
+			fondo = cargar_fondo();
 			this->DoubleBuffered = true;
 			
 			paleta = gcnew array<int>(8);
@@ -90,6 +91,7 @@ namespace Victorian {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(148, 54);
 			this->button1->TabIndex = 1;
+			this->button1->TabStop = false;
 			this->button1->Text = L"Carrera";
 			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
@@ -205,7 +207,16 @@ namespace Victorian {
 	{
 		e->Graphics->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
 		e->Graphics->PixelOffsetMode = System::Drawing::Drawing2D::PixelOffsetMode::Half;
-		e->Graphics->DrawImage(fondo, 0, 0, this->ClientSize.Width, this->ClientSize.Height);
+
+		if (fondo != nullptr)
+		{
+			e->Graphics->DrawImage(fondo, 0, 0, this->ClientSize.Width, this->ClientSize.Height);
+		}
+
+		else
+		{
+			e->Graphics->Clear(Color::Wheat);
+		}
 
 		circulos->dibujar(e->Graphics);
 		cuadrados->dibujar(e->Graphics);
@@ -226,8 +237,16 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 {
 	Form_Carrera^ carrera = gcnew Form_Carrera();
 	this->Hide();
-	carrera->ShowDialog();
-	this->Show();
+	
+	if (carrera->ShowDialog() == System::Windows::Forms::DialogResult::Abort)
+	{
+		this->Close();
+	}
+	
+	else
+	{
+		this->Show();
+	}
 }
 };
 }

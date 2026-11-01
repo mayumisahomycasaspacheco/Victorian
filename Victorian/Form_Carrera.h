@@ -2,6 +2,7 @@
 #include "Circulo.h"
 #include "Cuadrado.h"
 #include "Triangulo.h"
+#include "Fondo.h"
 
 namespace Victorian {
 
@@ -22,7 +23,7 @@ namespace Victorian {
 		{
 			InitializeComponent();
 
-			fondo = gcnew Bitmap("..\\sprites\\Sprite-0001.png");
+			fondo = cargar_fondo();
 			this->DoubleBuffered = true;
 			
 			int color_circulo = ColorTranslator::ToWin32(Color::FromArgb(128, 0, 32));
@@ -46,6 +47,7 @@ namespace Victorian {
 			}
 		}
 	private: System::Windows::Forms::Timer^ timer1;
+	private: System::Windows::Forms::Button^ button1;
 	protected:
 	private: System::ComponentModel::IContainer^ components;
 
@@ -64,6 +66,7 @@ namespace Victorian {
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// timer1
@@ -71,11 +74,28 @@ namespace Victorian {
 			this->timer1->Interval = 30;
 			this->timer1->Tick += gcnew System::EventHandler(this, &Form_Carrera::timer1_Tick);
 			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::Goldenrod;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Old English Text MT", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button1->ForeColor = System::Drawing::Color::SaddleBrown;
+			this->button1->Location = System::Drawing::Point(595, 619);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(148, 54);
+			this->button1->TabIndex = 2;
+			this->button1->TabStop = false;
+			this->button1->Text = L"Exit";
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &Form_Carrera::button1_Click);
+			// 
 			// Form_Carrera
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1332, 703);
+			this->Controls->Add(this->button1);
 			this->KeyPreview = true;
 			this->Name = L"Form_Carrera";
 			this->Text = L"Form_Carrera";
@@ -104,8 +124,17 @@ namespace Victorian {
 	{
 		e->Graphics->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
 		e->Graphics->PixelOffsetMode = System::Drawing::Drawing2D::PixelOffsetMode::Half;
-		e->Graphics->DrawImage(fondo, 0, 0, this->ClientSize.Width, this->ClientSize.Height);
-		
+
+		if (fondo != nullptr)
+		{
+			e->Graphics->DrawImage(fondo, 0, 0, this->ClientSize.Width, this->ClientSize.Height);
+		}
+
+		else
+		{
+			e->Graphics->Clear(Color::Wheat);
+		}
+
 		Pen^ lapizMeta = gcnew Pen(Color::FromArgb(140, 47, 47), 6);
 		e->Graphics->DrawLine(lapizMeta, meta, 0, meta, this->ClientSize.Height);
 		
@@ -151,5 +180,9 @@ namespace Victorian {
 
 		this->Invalidate();
 	}
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		this->DialogResult = System::Windows::Forms::DialogResult::Abort;
+	}
+};
 }

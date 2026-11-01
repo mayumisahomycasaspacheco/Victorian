@@ -1,4 +1,5 @@
 #pragma once
+#include "Fondo.h"
 
 namespace Victorian {
 
@@ -19,7 +20,7 @@ namespace Victorian {
 		{
 			InitializeComponent();
 			
-			fondo = gcnew Bitmap("..\\sprites\\Sprite-0001.png");
+			fondo = cargar_fondo();
 			this->DoubleBuffered = true;
 		}
 
@@ -37,6 +38,7 @@ namespace Victorian {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label2;
 	protected:
 
 	private:
@@ -52,9 +54,11 @@ namespace Victorian {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Form_Inicio::typeid));
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -98,12 +102,26 @@ namespace Victorian {
 			this->label1->TabIndex = 2;
 			this->label1->Text = L"Victorian";
 			// 
+			// label2
+			// 
+			this->label2->BackColor = System::Drawing::Color::SaddleBrown;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Georgia", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->ForeColor = System::Drawing::Color::Cornsilk;
+			this->label2->Location = System::Drawing::Point(171, 301);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(993, 152);
+			this->label2->TabIndex = 3;
+			this->label2->Text = resources->GetString(L"label2.Text");
+			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
 			// Form_Inicio
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1332, 703);
+			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
@@ -133,7 +151,17 @@ namespace Victorian {
 	{
 		e->Graphics->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
 		e->Graphics->PixelOffsetMode = System::Drawing::Drawing2D::PixelOffsetMode::Half;
-		e->Graphics->DrawImage(fondo, 0, 0, this->ClientSize.Width, this->ClientSize.Height);;
+
+		if (fondo != nullptr)
+		{
+			e->Graphics->DrawImage(fondo, 0, 0, this->ClientSize.Width, this->ClientSize.Height);
+		}
+
+		else
+		{
+			e->Graphics->Clear(Color::Wheat);
+		}
+
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) 
 	{

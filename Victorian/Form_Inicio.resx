@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Press Play and use the keys T, C, E, D and R to create triangles, circles, ellipses, squares and rectangles of random sizes and colors. When you’re done exploring, press the Carrera button to watch a race between shapes. Press ESC to leave.</value>
+  </data>
 </root>
