@@ -10,6 +10,14 @@ int main(array<String^>^ args)
 {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-	Application::Run(gcnew Victorian::Form_Carrera());
+	
+	Victorian::Form_Inicio^ inicio = gcnew Victorian::Form_Inicio();
+	Application::Run(inicio);
+
+	if (inicio->modo == 1)
+	{
+		Application::Run(gcnew Victorian::MyForm());
+	}
+
 	return 0;
 }

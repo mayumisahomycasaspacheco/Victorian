@@ -106,7 +106,8 @@ namespace Victorian {
 		e->Graphics->PixelOffsetMode = System::Drawing::Drawing2D::PixelOffsetMode::Half;
 		e->Graphics->DrawImage(fondo, 0, 0, this->ClientSize.Width, this->ClientSize.Height);
 		
-		e->Graphics->DrawLine(Pens::Black, meta, 0, meta, 576);
+		Pen^ lapizMeta = gcnew Pen(Color::FromArgb(140, 47, 47), 6);
+		e->Graphics->DrawLine(lapizMeta, meta, 0, meta, this->ClientSize.Height);
 		
 		circulo->dibujar(e->Graphics);
 		cuadrado->dibujar(e->Graphics);
