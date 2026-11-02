@@ -5,7 +5,7 @@ Victorian is a small shape game with C++ and Windows Forms, with an old treasure
 
 ## How to run it
 1. Go to the Releases section of this repository.
-2. Dowload.exe and play.
+2. Dowload Victorian.exe and play.
 
 ## How to play
 - Press **Play** to start the free mode.
